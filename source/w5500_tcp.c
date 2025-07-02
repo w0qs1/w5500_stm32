@@ -7,6 +7,15 @@
 
 #include "w5500_tcp.h"
 
+/**
+ * @brief  Open a socket as a TCP Client
+ * @note   
+ * @param  socket: Socket number
+ * @param  ip_address: IP Address of TCP server
+ * @param  port: Port of TCP server
+ * @retval None
+ */
+ */
 void w5500_open_tcp_client(uint8_t socket, uint8_t* ip_address, uint16_t port) {
 	uint16_be_t port_be;
 	port_be.u16 = port;
@@ -48,6 +57,13 @@ void w5500_open_tcp_client(uint8_t socket, uint8_t* ip_address, uint16_t port) {
 	return;
 }
 
+/**
+ * @brief  Connect socket as a TCP client
+ * @note   Call after w5500_open_tcp_client()
+ * @param  socket: Socket number
+ * @retval 
+ */
+ */
 uint8_t w5500_connect_tcp_client(uint8_t socket) {
 	uint8_t SOCKET_ADDRESS = W5500_SOCKET_0_REGISTER + (socket << 2);
 
@@ -67,6 +83,14 @@ uint8_t w5500_connect_tcp_client(uint8_t socket) {
 	return W5500_TCP_CLIENT_ERR;
 }
 
+/**
+ * @brief  Open a socket as TCP server
+ * @note   
+ * @param  socket: Socket number
+ * @param  port: Port of the TCP server
+ * @retval None
+ */
+ */
 void w5500_open_tcp_server(uint8_t socket, uint16_t port) {
 	uint16_be_t port_be;
 	port_be.u16 = port;
@@ -97,6 +121,13 @@ void w5500_open_tcp_server(uint8_t socket, uint16_t port) {
 	return;
 }
 
+/**
+ * @brief  Listen(wait) for client to connect
+ * @note   Handles only 1 client at any given time. This is a blocking function; returns only after a client connects
+ * @param  socket: Socket number
+ * @retval None
+ */
+ */
 void w5500_listen_tcp_server(uint8_t socket) {
 	uint8_t SOCKET_ADDRESS = W5500_SOCKET_0_REGISTER + (socket << 2);
 
@@ -116,6 +147,13 @@ void w5500_listen_tcp_server(uint8_t socket) {
 	} while(status != W5500_SOCKET_SR_SOCK_ESTD);
 }
 
+/**
+ * @brief  Disconnect a TCP connection
+ * @note   Both Active and Passive disconnects
+ * @param  socket: Socket number
+ * @retval 
+ */
+ */
 uint8_t w5500_discon_tcp(uint8_t socket) {
 	uint8_t SOCKET_ADDRESS = W5500_SOCKET_0_REGISTER + (socket << 2);
 

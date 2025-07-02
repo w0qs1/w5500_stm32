@@ -9,6 +9,10 @@
 #define INC_W5500_CONFIG_H_
 
 // STM32 HAL Related config
+/**
+ * @brief Uncomment based on the type of Cortex-M MCU
+ * 
+ */
 #define W5500_USE_STM32F0xx
 //#define W5500_USE_STM32F1xx
 

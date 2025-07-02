@@ -7,6 +7,15 @@
 
 #include "w5500_socket.h"
 
+/**
+ * @brief  Send data through a socket
+ * @note   Setup UDP/TCP before calling this
+ * @param  socket: Socket to send data through
+ * @param  data: Pointer to data
+ * @param  len: Number of bytes to send
+ * @retval None
+ */
+ */
 void w5500_send(uint8_t socket, uint8_t* data, size_t len) {
 	uint8_t SOCKET_ADDRESS = W5500_SOCKET_0_REGISTER + (socket << 2);
 	uint8_t TX_BUFFER_ADDRESS = SOCKET_ADDRESS + 1;
@@ -31,6 +40,16 @@ void w5500_send(uint8_t socket, uint8_t* data, size_t len) {
 	return;
 }
 
+/**
+ * @brief  Receive data from a socket
+ * @note   Only for UDP, the source_port and source_ip are set
+ * @param  socket: Socket to receive data from
+ * @param  source_port: Port address of the sender (UDP)
+ * @param  source_ip: IP address of the sender (UDP)
+ * @param  data: Pointer to data
+ * @retval Returns the size of data received
+ */
+ */
 size_t w5500_recv(uint8_t socket, uint16_t* source_port, uint8_t* source_ip, uint8_t* data) {
 	uint8_t SOCKET_ADDRESS = W5500_SOCKET_0_REGISTER + (socket << 2);
 	uint8_t RX_BUFFER_ADDRESS = SOCKET_ADDRESS + 2;
@@ -97,6 +116,13 @@ size_t w5500_recv(uint8_t socket, uint16_t* source_port, uint8_t* source_ip, uin
 	return (size_t) data_length;
 }
 
+/**
+ * @brief  Close a socket
+ * @note   
+ * @param  socket: Socket to close
+ * @retval None
+ */
+ */
 void w5500_close(uint8_t socket) {
 	uint8_t SOCKET_ADDRESS = W5500_SOCKET_0_REGISTER + (socket << 2);
 
@@ -106,6 +132,14 @@ void w5500_close(uint8_t socket) {
 	return;
 }
 
+/**
+ * @brief  Read the Socket Mode register
+ * @note   
+ * @param  socket: Socket number
+ * @param  status: Pointer to status
+ * @retval None
+ */
+ */
 void w5500_socket_mode_status(uint8_t socket, uint8_t* status) {
 	uint8_t SOCKET_ADDRESS = W5500_SOCKET_0_REGISTER + (socket << 2);
 
@@ -114,6 +148,14 @@ void w5500_socket_mode_status(uint8_t socket, uint8_t* status) {
 	return;
 }
 
+/**
+ * @brief  Read the Socket Status register
+ * @note   
+ * @param  socket: Socket number
+ * @param  status: Pointer to status
+ * @retval None
+ */
+ */
 void w5500_socket_status(uint8_t socket, uint8_t* status) {
 	uint8_t SOCKET_ADDRESS = W5500_SOCKET_0_REGISTER + (socket << 2);
 
