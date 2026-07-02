@@ -35,7 +35,7 @@ void w5500_open_tcp_client(uint8_t socket, uint8_t* ip_address, uint16_t port) {
 
 	// Write the IP
 	w5500_reg_write(W5500_SOCKET_DEST_IP_ADDR_0, SOCKET_ADDRESS, *(ip_address + 0));
-	w5500_reg_write(W5500_SOCKET_DEST_IP_ADDR_1, SOCKET_ADDRESS, *(ip_address + 2));
+	w5500_reg_write(W5500_SOCKET_DEST_IP_ADDR_1, SOCKET_ADDRESS, *(ip_address + 1));
 	w5500_reg_write(W5500_SOCKET_DEST_IP_ADDR_2, SOCKET_ADDRESS, *(ip_address + 2));
 	w5500_reg_write(W5500_SOCKET_DEST_IP_ADDR_3, SOCKET_ADDRESS, *(ip_address + 3));
 
